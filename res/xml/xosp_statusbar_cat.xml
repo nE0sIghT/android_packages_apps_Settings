@@ -28,6 +28,13 @@
         android:entryValues="@array/status_bar_battery_style_values"
         android:defaultValue="6" />
 
+    <!-- Custom carrier label -->
+    <PreferenceScreen
+        android:key="carrierlabel"
+        android:fragment="com.android.settings.xosp.CarrierLabel"
+        android:title="@string/carrier_options" />
+
+
     <PreferenceScreen
         android:fragment="com.android.settings.xosp.StatusBarTickerSettings"
         android:key="ticker_settings"
