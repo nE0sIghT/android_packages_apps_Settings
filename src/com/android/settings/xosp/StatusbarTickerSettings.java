@@ -145,6 +145,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.GALAXY;
+        return MetricsEvent.XOSP;
     }
 }
