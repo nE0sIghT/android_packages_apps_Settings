@@ -28,6 +28,12 @@
         android:entryValues="@array/status_bar_battery_style_values"
         android:defaultValue="6" />
 
+    <PreferenceScreen
+        android:fragment="com.android.settings.xosp.StatusbarTickerSettings"
+        android:key="ticker_settings"
+        android:title="@string/ticker_screen_title"
+        android:summary="@string/ticker_screen_summary" />
+
     <!-- Network traffic meter -->
 	<PreferenceCategory
 	     android:key="category_network_traffic"
