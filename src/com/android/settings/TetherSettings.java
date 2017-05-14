@@ -412,9 +412,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
 
         updateState();
-        if (enableWifiApSettingsExt) {
-            registerConfigureReceiver(getActivity());
-        }
+        registerConfigureReceiver(getActivity());
     }
 
     @Override
@@ -431,9 +429,7 @@ public class TetherSettings extends RestrictedSettingsFragment
             mEnableWifiAp.setOnPreferenceChangeListener(null);
             mWifiApEnabler.pause();
         }
-        if (enableWifiApSettingsExt) {
-            unRegisterConfigureReceiver();
-        }
+        unRegisterConfigureReceiver();
     }
 
     private void updateState() {
