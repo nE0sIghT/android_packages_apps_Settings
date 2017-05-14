@@ -94,13 +94,20 @@ public class UsbBackend {
         return MODE_POWER_SINK | getUsbDataMode();
     }
 
+    private boolean isInPowerSourceMode(){
+        if(mPort != null){
+            return mPortStatus.getCurrentPowerRole() == UsbPort.POWER_ROLE_SOURCE;
+        }
+        return false;
+    }
+
     public int getUsbDataMode() {
         if (mTetheringEnabled
                 && mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_RNDIS)) {
             return MODE_DATA_TETHERING;
         }
         if (!mIsUnlocked) {
-            return MODE_DATA_NONE;
+            return -1;
         } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_MTP)) {
             return MODE_DATA_MTP;
         } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_PTP)) {
@@ -114,25 +121,28 @@ public class UsbBackend {
     private void setUsbFunction(int mode) {
         switch (mode) {
             case MODE_DATA_MTP:
-                mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MTP);
-                mUsbManager.setUsbDataUnlocked(true);
+                mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MTP, true);
                 break;
             case MODE_DATA_PTP:
-                mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_PTP);
-                mUsbManager.setUsbDataUnlocked(true);
+                mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_PTP, true);
                 break;
             case MODE_DATA_MIDI:
-                mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MIDI);
-                mUsbManager.setUsbDataUnlocked(true);
+                mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MIDI, true);
                 break;
             case MODE_DATA_TETHERING:
                 Intent intent = new Intent();
                 intent.setClass(mContext, TetherSettings.class);
                 mContext.startActivity(intent);
                 break;
+            case MODE_DATA_NONE:
+                //Take MTP mode and data unlocked false as charging
+                if(!isInPowerSourceMode()){
+                    mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MTP, false);
+                    break;
+                }
             default:
-                mUsbManager.setCurrentFunction(null);
-                mUsbManager.setUsbDataUnlocked(false);
+                //default mode is "charging",take MTP mode and data unlocked false as charging
+                mUsbManager.setCurrentFunction(null, false);
                 break;
         }
     }
@@ -193,5 +203,19 @@ public class UsbBackend {
         }
         // No port, support sink modes only.
         return (mode & MODE_POWER_MASK) != MODE_POWER_SOURCE;
+    }
+
+    public boolean isCurrentModeSupported(int mode){
+        if (mPort != null){
+            int power = mPortStatus.getCurrentPowerRole() == UsbPort.POWER_ROLE_SOURCE
+                    ? MODE_POWER_SOURCE : MODE_POWER_SINK;
+            int data = mode & MODE_DATA_MASK;
+            if(data == 0){
+                return (mode & MODE_POWER_MASK) == power;
+            }else if((mode & MODE_POWER_MASK) != power){
+                return false;
+            }
+        }
+        return isModeSupported(mode);
     }
 }

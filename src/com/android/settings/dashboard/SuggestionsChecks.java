@@ -36,6 +36,7 @@ import com.android.settings.Settings.ScreenLockSuggestionActivity;
 import com.android.settings.Settings.WifiCallingSuggestionActivity;
 import com.android.settings.Settings.ZenModeAutomationSuggestionActivity;
 import com.android.settings.WallpaperSuggestionActivity;
+import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.drawer.Tile;
 
 import java.util.Collection;
@@ -66,6 +67,13 @@ public class SuggestionsChecks {
         } else if (className.equals(FingerprintEnrollSuggestionActivity.class.getName())) {
             return isDeviceSecured() || !isFingerprintEnabled();
         }
+
+        SuggestionFeatureProvider provider =
+            FeatureFactory.getFactory(mContext).getSuggestionFeatureProvider();
+        if (provider != null && provider.isPresent(className)) {
+            return provider.isSuggestionCompleted(mContext);
+        }
+
         return false;
     }
 
@@ -102,11 +110,13 @@ public class SuggestionsChecks {
     private boolean hasWallpaperSet() {
         IBinder b = ServiceManager.getService(Context.WALLPAPER_SERVICE);
         IWallpaperManager service = Stub.asInterface(b);
-        try {
-            return !service.isSetWallpaperAllowed(mContext.getOpPackageName()) ||
-                    service.getWallpaper(mCallback, WallpaperManager.FLAG_SYSTEM,
-                            new Bundle(), mContext.getUserId()) != null;
-        } catch (RemoteException e) {
+        if (service != null) {
+            try {
+                return !service.isSetWallpaperAllowed(mContext.getOpPackageName()) ||
+                        service.getWallpaper(mCallback, WallpaperManager.FLAG_SYSTEM,
+                                new Bundle(), mContext.getUserId()) != null;
+            } catch (RemoteException e) {
+            }
         }
         return false;
     }

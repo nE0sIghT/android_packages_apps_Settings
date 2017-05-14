@@ -179,6 +179,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         mReceiver.register(true);
         updateRingOrNotificationPreference();
         updateEffectsSuppressor();
+        updateVibrateWhenRinging();
         for (VolumeSeekBarPreference volumePref : mVolumePrefs) {
             volumePref.onActivityResume();
         }

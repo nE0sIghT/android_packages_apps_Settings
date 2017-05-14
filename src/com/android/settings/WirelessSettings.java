@@ -421,6 +421,13 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             broadcastSettingsPref.checkRestrictionAndSetDisabled(
                     UserManager.DISALLOW_CONFIG_CELL_BROADCASTS);
         }
+        if (QtiImsExtUtils.isCarrierOneSupported() && mUm.isAdminUser()
+                 && QtiImsExtUtils.isCarrierOneCallSettingsAvailable(getActivity())) {
+             //Call Settings already have WFC settings.
+            removePreference(KEY_WFC_SETTINGS);
+        } else {
+            removePreference(KEY_CALL_SETTINGS);
+        }
     }
 
     @Override

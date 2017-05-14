@@ -167,6 +167,9 @@ public class BandMode extends Activity {
             if (DBG) log("Add " + item.toString());
 
             for (int i=0; i<bands.length; i++) {
+                if (bands[i] == Phone.BM_UNSPECIFIED) {
+                    continue;
+                }
                 item = new BandListItem(bands[i]);
                 mBandListAdapter.add(item);
                 if (DBG) log("Add " + item.toString());
