@@ -183,7 +183,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         boolean enableWifiApSettingsExt = getResources().getBoolean(R.bool.show_wifi_hotspot_settings);
         boolean isWifiApEnabled = getResources().getBoolean(R.bool.hide_wifi_hotspot);
         checkDefaultValue(getActivity());
-        if (mEnableWifiApSettingsExt) {
+        if (enableWifiApSettingsExt) {
             mEnableWifiAp =
                     (HotspotPreference) findPreference(ENABLE_WIFI_AP_EXT);
             getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP));
@@ -412,7 +412,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
 
         updateState();
-        if (mEnableWifiApSettingsExt) {
+        if (enableWifiApSettingsExt) {
             registerConfigureReceiver(getActivity());
         }
     }
@@ -431,7 +431,7 @@ public class TetherSettings extends RestrictedSettingsFragment
             mEnableWifiAp.setOnPreferenceChangeListener(null);
             mWifiApEnabler.pause();
         }
-        if (mEnableWifiApSettingsExt) {
+        if (enableWifiApSettingsExt) {
             unRegisterConfigureReceiver();
         }
     }
@@ -605,9 +605,6 @@ public class TetherSettings extends RestrictedSettingsFragment
                 startTethering(TETHERING_USB);
             } else {
                 mCm.stopTethering(TETHERING_USB);
-                if (mIsWifiEnabled) {
-                    mWifiManager.setWifiEnabled(true);
-                }
             }
         } else if (preference == mBluetoothTether) {
             if (mBluetoothTether.isChecked()) {

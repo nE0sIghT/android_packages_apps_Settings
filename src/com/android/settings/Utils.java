@@ -1272,17 +1272,12 @@ public final class Utils extends com.android.settingslib.Utils {
         }
     }
 
-    public static String getServiceStateString(int state, Resources res) {
-        switch (state) {
-            case ServiceState.STATE_IN_SERVICE:
-                return res.getString(R.string.radioInfo_service_in);
-            case ServiceState.STATE_OUT_OF_SERVICE:
-            case ServiceState.STATE_EMERGENCY_ONLY:
-                return res.getString(R.string.radioInfo_service_out);
-            case ServiceState.STATE_POWER_OFF:
-                return res.getString(R.string.radioInfo_service_off);
-            default:
-                return res.getString(R.string.radioInfo_unknown);
-        }
+    public static boolean isCarrierDemoUser(Context context) {
+        final String carrierDemoModeSetting =
+                context.getString(com.android.internal.R.string.config_carrierDemoModeSetting);
+        return UserManager.isDeviceInDemoMode(context)
+                && getUserManager(context).isDemoUser()
+                && !TextUtils.isEmpty(carrierDemoModeSetting)
+                && Settings.Secure.getInt(context.getContentResolver(), carrierDemoModeSetting, 0) == 1;
     }
 }
