@@ -19,19 +19,19 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/weather_category" >
 
-    <com.android.settings.xosp.preferences.SystemSettingsSwitchPreference
+    <com.android.settings.xosp.preferences.SystemSettingSwitchPreference
         android:key="lock_screen_show_weather"
         android:title="@string/weather_show_weather_title"
         android:summary="@string/weather_show_weather_summary" />
 
-    <com.android.settings.xosp.preferences.SystemSettingsSwitchPreference
+    <com.android.settings.xosp.preferences.SystemSettingSwitchPreference
         android:key="lock_screen_show_weather_location"
         android:title="@string/weather_show_location_title"
         android:summary="@string/weather_show_location_summary"
         android:defaultValue="true"
         android:dependency="lock_screen_show_weather" />
 
-    <com.android.settings.xosp.preferences.SystemSettingsSwitchPreference
+    <com.android.settings.xosp.preferences.SystemSettingSwitchPreference
         android:key="lock_screen_show_weather_timestamp"
         android:title="@string/weather_show_timestamp_title"
         android:summary="@string/weather_show_timestamp_summary"

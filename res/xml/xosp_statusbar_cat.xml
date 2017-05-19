@@ -29,7 +29,7 @@
         android:defaultValue="6" />
 
     <PreferenceScreen
-        android:fragment="com.android.settings.xosp.StatusbarTickerSettings"
+        android:fragment="com.android.settings.xosp.StatusBarTickerSettings"
         android:key="ticker_settings"
         android:title="@string/ticker_screen_title"
         android:summary="@string/ticker_screen_summary" />

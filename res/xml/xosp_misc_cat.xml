@@ -50,7 +50,7 @@
             android:defaultValue="true" />
 
         <!-- Screenshot Sound -->
-        <com.android.setting.xosp.preferences.SystemSettingSwitchPreference
+        <com.android.settings.xosp.preferences.SystemSettingSwitchPreference
             android:key="screenshot_sound"
             android:title="@string/screenshot_sound_title"
             android:summary="@string/screenshot_sound_summary" />
