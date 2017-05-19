@@ -91,8 +91,10 @@ public class MiscPersonalizations extends SettingsPreferenceFragment implements
     
     private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
+    private static final String KEY_SCREENSHOT_SOUND = "screenshot_sound";
     
     private SwitchPreference mTapToWakePreference;
+    private SwitchPreference mScreenshotSoundPreference;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +117,9 @@ public class MiscPersonalizations extends SettingsPreferenceFragment implements
             removePreference(KEY_PROXIMITY_WAKE);
             Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
         }
+
+        mScreenshotSoundPreference = (SwitchPreference) findPreference(KEY_SCREENSHOT_SOUND);
+        mScreenshotSoundPreference.setOnPreferenceChangeListener(this);
     }
     
     private static boolean isTapToWakeAvailable(Resources res) {
@@ -133,6 +138,9 @@ public class MiscPersonalizations extends SettingsPreferenceFragment implements
         if (mTapToWakePreference != null) {
             int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
             mTapToWakePreference.setChecked(value != 0);
+        } else if (mScreenshotSoundPreference != null) {
+            int value = Settings.Secure.getInt(getContentResolver(), SCREENSHOT_SOUND, 0);
+            mScreenshotSoundPreference.setChecked(value != 0);
         }
     }
 
@@ -144,11 +152,14 @@ public class MiscPersonalizations extends SettingsPreferenceFragment implements
         if (preference == mTapToWakePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, value ? 1 : 0);
+        } else if (preference == mScreenshotSoundPreference) {
+            boolean value = (Boolean) objValue;
+            Settings.Secure.putInt(getContentResolver(), SCREENSHOT_SOUND, value ? 1 : 0);
         }
         return true;
     }
     
     protected int getMetricsCategory(){
-        return MetricsEvent.APPLICATION;
+        return MetricsEvent.XOSP;
     }
 }

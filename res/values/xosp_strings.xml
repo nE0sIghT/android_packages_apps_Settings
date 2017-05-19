@@ -396,4 +396,8 @@
     <string name="system_app_remover_warning_summary">When you remove one of the system apps even if just one of them, the system will automatically reboot after the operation so make sure you save your stuff</string>
     <string name="system_app_remover_post_toast_reboot">Rebooting to apply the changes... </string>
 
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot Sound</string>
+    <string name="screenshot_sound_summary">Enables/Disables Screenshot sound</string>
+
 </resources>

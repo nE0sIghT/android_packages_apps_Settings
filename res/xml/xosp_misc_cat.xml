@@ -49,6 +49,12 @@
             android:summary="@string/proximity_wake_summary"
             android:defaultValue="true" />
 
+        <!-- Screenshot Sound -->
+        <SwitchPreference
+            android:key="screenshot_sound"
+            android:title="@string/screenshot_sound_title"
+            android:summary="@string/screenshot_sound_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
