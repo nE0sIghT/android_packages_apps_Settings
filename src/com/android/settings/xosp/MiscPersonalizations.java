@@ -139,7 +139,7 @@ public class MiscPersonalizations extends SettingsPreferenceFragment implements
             int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
             mTapToWakePreference.setChecked(value != 0);
         } else if (mScreenshotSoundPreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), SCREENSHOT_SOUND, 0);
+            int value = Settings.System.getInt(getContentResolver(), SCREENSHOT_SOUND, 0);
             mScreenshotSoundPreference.setChecked(value != 0);
         }
     }
@@ -154,7 +154,7 @@ public class MiscPersonalizations extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, value ? 1 : 0);
         } else if (preference == mScreenshotSoundPreference) {
             boolean value = (Boolean) objValue;
-            Settings.Secure.putInt(getContentResolver(), SCREENSHOT_SOUND, value ? 1 : 0);
+            Settings.System.putInt(getContentResolver(), SCREENSHOT_SOUND, value ? 1 : 0);
         }
         return true;
     }
