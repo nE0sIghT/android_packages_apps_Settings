@@ -1,0 +1,5 @@
+[gerrit]
+host=review.xosp.org
+port=29418
+project=android_packages_apps_Settings.git
+defaultbranch=xosp-n-rebase
