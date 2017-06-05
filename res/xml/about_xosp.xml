@@ -30,15 +30,18 @@
 
 	    <Preference
             android:key="xosp_site"
-            android:icon="@drawable/ic_xosp_main"
             android:title="@string/xosp_site_title"
             android:summary="@string/xosp_site_summary" />
 
 	    <Preference
             android:key="xosp_downloads"
-            android:icon="@drawable/ic_xosp_main"
             android:title="@string/xosp_downloads_site_title"
             android:summary="@string/xosp_downloads_site_summary" />
+
+        <Preference
+            android:key="xosp_statistics"
+            android:title="@string/xosp_statistics_site_title"
+            android:summary="@string/xosp_statistics_site_summary" />
 
 	    <Preference
             android:key="xosp_jenkins"
@@ -49,11 +52,6 @@
             android:key="xosp_source"
             android:title="@string/xosp_source_title"
             android:summary="@string/xosp_source_summary" />
-	        
-	    <Preference
-            android:key="xosp_devices_source"
-            android:title="@string/xosp_devices_source_title"
-            android:summary="@string/xosp_devices_source_summary" />
 
         <Preference
         	android:key="xosp_telegram_group"
@@ -75,15 +73,10 @@
             android:title="@string/xosp_facebook_title"
             android:summary="@string/xosp_facebook_summary" />
 
-       	<Preference
+       	<!--<Preference
             android:key="xosp_translations"
             android:title="@string/xosp_translations_title"
-            android:summary="@string/xosp_translations_summary" />
-
-        <Preference
-        	android:key="xosp_teespring"
-        	android:title="@string/xosp_teespring_title"
-        	android:summary="@string/xosp_teespring_summary" />
+            android:summary="@string/xosp_translations_summary" />-->
 
 	    <Preference
             android:key="xosp_donate"

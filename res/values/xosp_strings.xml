@@ -158,16 +158,14 @@
     <string name="xosp_jenkins_site_summary">Our Jenkins server!</string>
     <string name="xosp_site_title">XOSP Official Site</string>
     <string name="xosp_site_summary">Visit our site!</string>
-    <string name="xosp_devices_source_title">XOSP Official Devices Sources</string>
-    <string name="xosp_devices_source_summary">XOSP devices sources on Github</string>
     <string name="xosp_translations_title">XOSP Crowdin</string>
     <string name="xosp_translations_summary">Contribute by translating XOSP in your language!</string>
-    <string name="xosp_teespring_title">XOSP Teespring Store</string>
-    <string name="xosp_teespring_summary">Visit our Teespring store for awesome merchandise!</string>
     <string name="xosp_telegram_group_title">XOSP Telegram Community Group</string>
     <string name="xosp_telegram_group_summary">Join our community group on Telegram</string>
     <string name="xosp_telegram_channel_title">XOSP Telegram Channel</string>
     <string name="xosp_telegram_channel_summary">Get latest XOSP news by following our Telegram channel</string>
+    <string name="xosp_statistics_site_title">XOSP Statistics</string>
+    <string name="xosp_statistics_site_summary">All the installations made by the users</string>
     <string name="xosp_about_intro_title">What is XOSP?</string>
     <string name="xosp_about_intro_summary">XOSP is an after-market firmware based on CodeAuroraSources (CAF) destinated for a wide range of Android phones.\n The name stands for the Xperia Open Source Project and the project was initially created by nilac for the Galaxy S+ (his old device) years ago when back then the ROM was called S+ Reborn.\n The vision was to create a minimal bloat free ROM which included Sony Xperia specific apps and various tweaks users would expect from a custom ROM.</string>
     

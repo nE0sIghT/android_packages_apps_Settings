@@ -67,13 +67,12 @@ public class About extends SettingsPreferenceFragment
     
     Preference mSiteUrl;
     Preference mDownloadsSiteUrl;
+    Preference mStatisticsSiteUrl;
     Preference mJenkinsSiteUrl;
     Preference mSourceUrl;
-    Preference mDevicesSourceUrl;
     Preference mGoogleUrl;
     Preference mFacebookUrl;
-    Preference mTranslationsUrl;
-    Preference mTeespringUrl;
+    //Preference mTranslationsUrl;
     Preference mDonateUrl;
     Preference mTelegramChannelUrl;
     Preference mTelegramGroupUrl;
@@ -86,14 +85,13 @@ public class About extends SettingsPreferenceFragment
         ContentResolver resolver = getContentResolver();
         mSiteUrl = findPreference("xosp_site");
         mDownloadsSiteUrl = findPreference("xosp_downloads");
+        mStatisticsSiteUrl = findPreference("xosp_statistics");
         mJenkinsSiteUrl = findPreference("xosp_jenkins");
         mSourceUrl = findPreference("xosp_source");
-        mDevicesSourceUrl = findPreference("xosp_devices_source");
         mGoogleUrl = findPreference("xosp_google_plus");
         mFacebookUrl = findPreference("xosp_facebook");
         mDonateUrl = findPreference("xosp_donate");
-        mTranslationsUrl = findPreference("xosp_translations");
-        mTeespringUrl = findPreference("xosp_teespring");
+        //mTranslationsUrl = findPreference("xosp_translations");
         mTelegramChannelUrl = findPreference("xosp_telegram_channel");
         mTelegramGroupUrl = findPreference("xosp_telegram_group");
     }
@@ -109,23 +107,21 @@ public class About extends SettingsPreferenceFragment
             launchUrl("https://xosp.org");
         } else if (preference == mDownloadsSiteUrl) {
             launchUrl("https://downloads.xosp.org");
+        } else if(preference == mStatisticsSiteUrl) {
+            launchUrl("https://stats.xosp.org");
         } else if (preference == mJenkinsSiteUrl) {
             launchUrl("http://jenkins.xosp.org");
         } else if (preference == mSourceUrl) {
             launchUrl("https://github.com/XOSP-Project");
-        } else if (preference == mDevicesSourceUrl) {
-            launchUrl("https://github.com/XOSP-Devices");
         } else if (preference == mGoogleUrl) {
             launchUrl("https://plus.google.com/u/0/communities/117671498272072664538");
         } else if (preference == mFacebookUrl) {
             launchUrl("https://www.facebook.com/xosprom");
         } else if (preference == mDonateUrl) {
             launchUrl("https://www.paypal.me/xosp");
-        } else if (preference == mTranslationsUrl){
+        }/* else if (preference == mTranslationsUrl){
             launchUrl("https://os4fvts.oneskyapp.com/admin/project/dashboard/project/136264");
-        } else if (preference == mTeespringUrl){
-            launchUrl("https://teespring.com/stores/xosp-shop");
-        } else if (preference == mTelegramChannelUrl){
+        }*/ else if (preference == mTelegramChannelUrl){
             launchUrl("https://t.me/xosp_channel");
         } else if (preference == mTelegramGroupUrl){
             launchUrl("https://t.me/XOSPCommunity");
