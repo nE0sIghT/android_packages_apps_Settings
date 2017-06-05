@@ -23,8 +23,8 @@
            android:title="@string/double_tap_sleep_anywhere_title"
            android:summary="@string/double_tap_sleep_anywhere_summary" />
 
-        <PreferenceScreen
+        <!--<PreferenceScreen
            android:fragment="com.android.settings.xosp.LockscreenWeatherCategory"
            android:key="lockscreen_weather"
-           android:title="@string/weather_category" />
+           android:title="@string/weather_category" />-->
 </PreferenceScreen>
