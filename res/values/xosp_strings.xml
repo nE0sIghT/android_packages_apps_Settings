@@ -100,6 +100,7 @@
     <string name="xosp_settings_blur_cat">Blur Personalizations</string>
     <string name="notification_drawer_title">Notification Drawer Personalizations</string>
     <string name="header_cat">Notification Header</string>
+    <string name="notification_category_title">Notifications</string>
 
     <!-- XOSP Misc category -->
     <string name="xosp_misc_screen_title">Screen</string>
