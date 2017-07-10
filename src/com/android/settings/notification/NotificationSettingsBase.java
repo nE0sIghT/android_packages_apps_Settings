@@ -41,8 +41,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static android.service.notification.NotificationListenerService.Ranking.importanceToLevel;
-
 import static com.android.settings.notification.RestrictedDropDownPreference.RestrictedItem;
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
@@ -164,16 +162,16 @@ abstract public class NotificationSettingsBase extends SettingsPreferenceFragmen
             mImportance.setDisabledByAdmin(mSuspendedAppsAdmin);
             mImportance.setMinimumProgress(
                     notBlockable ? Ranking.IMPORTANCE_MIN : Ranking.IMPORTANCE_NONE);
-            mImportance.setMax(importanceToLevel(Ranking.IMPORTANCE_MAX));
-            mImportance.setImportance(importance);
+            mImportance.setMax(Ranking.IMPORTANCE_MAX);
+            mImportance.setProgress(importance);
             mImportance.setAutoOn(importance == Ranking.IMPORTANCE_UNSPECIFIED);
             mImportance.setCallback(new ImportanceSeekBarPreference.Callback() {
                 @Override
-                public void onImportanceChanged(int importance, boolean fromUser) {
+                public void onImportanceChanged(int progress, boolean fromUser) {
                     if (fromUser) {
-                        mBackend.setImportance(mPkg, mUid, importance);
+                        mBackend.setImportance(mPkg, mUid, progress);
                     }
-                    updateDependents(importance);
+                    updateDependents(progress);
                 }
             });
         } else {
