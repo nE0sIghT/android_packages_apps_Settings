@@ -1250,28 +1250,6 @@ public final class Utils extends com.android.settingslib.Utils {
         }
         return false;
     }
-
-    public static String join(Resources res, List<String> items) {
-        final int count = items.size();
-        if (items.isEmpty()) {
-            return null;
-        } else if (count == 1) {
-            return items.get(0);
-        } else if (count == 2) {
-            return res.getString(R.string.join_two_items, items.get(0), items.get(1));
-        } else {
-            String middle = items.get(count - 2);
-            for (int i = count - 3; i > 0; i--) {
-                middle = res.getString(R.string.join_many_items_middle,
-                        items.get(i), middle);
-            }
-            final String allButLast = res.getString(R.string.join_many_items_first,
-                    items.get(0), middle);
-            return res.getString(R.string.join_many_items_last, allButLast,
-                    items.get(count - 1));
-        }
-    }
-
     public static boolean isCarrierDemoUser(Context context) {
         final String carrierDemoModeSetting =
                 context.getString(com.android.internal.R.string.config_carrierDemoModeSetting);
