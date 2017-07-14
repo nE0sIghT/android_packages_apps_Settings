@@ -114,7 +114,6 @@ public class ManageApplications extends InstrumentedFragment
 
     // constant value that can be used to check return code from sub activity.
     private static final int INSTALLED_APP_DETAILS = 1;
-    private static final int ADVANCED_SETTINGS = 2;
 
     public static final int SIZE_TOTAL = 0;
     public static final int SIZE_INTERNAL = 1;
@@ -545,8 +544,6 @@ public class ManageApplications extends InstrumentedFragment
         if (mOptionsMenu == null) {
             return;
         }
-        mOptionsMenu.findItem(R.id.advanced).setVisible(
-                mListType == LIST_TYPE_MAIN || mListType == LIST_TYPE_NOTIFICATION);
 
         mOptionsMenu.findItem(R.id.sort_order_alpha).setVisible(mListType == LIST_TYPE_STORAGE
                 && mSortOrder != R.id.sort_order_alpha);
